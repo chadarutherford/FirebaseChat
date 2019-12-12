@@ -6,6 +6,7 @@
 //  Copyright © 2019 chadarutherford.com. All rights reserved.
 //
 
+import Firebase
 import UIKit
 import SwiftUI
 
@@ -15,7 +16,15 @@ class ChatsTableViewController: UITableViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        if Auth.auth().currentUser == nil {
+//            perform(#selector(handleLogout), with: nil, afterDelay: 0)
+//        }
+    }
+    
     @objc func handleLogout() {
+        try? Auth.auth().signOut()
         let loginController = LoginController()
         loginController.modalPresentationStyle = .fullScreen
         present(loginController, animated: true)

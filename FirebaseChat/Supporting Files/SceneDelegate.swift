@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -22,6 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.rootViewController = UINavigationController(rootViewController: ChatsTableViewController())
         self.window = window
         window.makeKeyAndVisible()
+        FirebaseApp.configure()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
